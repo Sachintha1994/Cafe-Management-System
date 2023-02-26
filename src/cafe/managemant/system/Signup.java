@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
 
-
 /**
  *
  * @author sachi
@@ -17,15 +16,16 @@ public class Signup extends javax.swing.JFrame {
 
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
     public String mobileNumberPattern = "^[0-9]*$";
-     /**
+
+    /**
      * Creates new form Signup
      */
     public Signup() {
         initComponents();
         btnSave.setEnabled(false);
     }
-    
-    public void clear(){
+
+    public void clear() {
         txtName.setText("");
         txtEmail.setText("");
         txtMobileNumber.setText("");
@@ -34,10 +34,10 @@ public class Signup extends javax.swing.JFrame {
         txtAnswer.setText("");
         txtPassword.setText("");
         btnSave.setEnabled(false);
-        
+
     }
-    
-    public void validateFields(){
+
+    public void validateFields() {
         String name = txtName.getText();
         String email = txtEmail.getText();
         String mobileNumber = txtMobileNumber.getText();
@@ -45,14 +45,13 @@ public class Signup extends javax.swing.JFrame {
         String password = txtPassword.getText();
         String securityQuestion = txtSecurityQuestion.getText();
         String answer = txtAnswer.getText();
-        
-        if(!name.equals("") && email.matches(emailPattern) && mobileNumber.matches(mobileNumberPattern) && mobileNumber.length() == 10 && !address.equals("") && !password.equals("") && !securityQuestion.equals("") && !answer.equals(""))
+
+        if (!name.equals("") && email.matches(emailPattern) && mobileNumber.matches(mobileNumberPattern) && mobileNumber.length() == 10 && !address.equals("") && !password.equals("") && !securityQuestion.equals("") && !answer.equals("")) {
             btnSave.setEnabled(true);
-        
-        else
+        } else {
             btnSave.setEnabled(false);
-        
-            
+        }
+
     }
 
     /**
@@ -230,6 +229,11 @@ public class Signup extends javax.swing.JFrame {
 
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 590, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
@@ -253,11 +257,11 @@ public class Signup extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-       int a = JOptionPane.showConfirmDialog(null, "Do you really want to close Application","Select",JOptionPane.YES_NO_OPTION);
-       if (a==0){
-       
-           System.exit(0);
-       }
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to close Application", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+
+            System.exit(0);
+        }
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -271,8 +275,7 @@ public class Signup extends javax.swing.JFrame {
         user.setAnswer(txtAnswer.getText());
         UserDao.save(user);
         clear();
-        
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -309,6 +312,12 @@ public class Signup extends javax.swing.JFrame {
     private void txtAnswerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnswerKeyReleased
         validateFields();// TODO add your handling code here:
     }//GEN-LAST:event_txtAnswerKeyReleased
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
