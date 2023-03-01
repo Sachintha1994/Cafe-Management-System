@@ -15,7 +15,7 @@ import model.User;
  */
 public class Login extends javax.swing.JFrame {
 
-    public String emailPatterm = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
+    public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
     
     /**
      * Creates new form Login
@@ -32,7 +32,7 @@ public class Login extends javax.swing.JFrame {
     public void validateFields(){
         String email = txtEmail.getText();
         String password = txtPassword.getText();
-        if(email.matches(emailPatterm) && !password.equals("")){
+        if(email.matches(emailPattern) && !password.equals("")){
             btnLogin.setEnabled(true);
         
         }else
@@ -121,7 +121,7 @@ public class Login extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(892, 353, -1, -1));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 353, 80, -1));
 
         btnForgotPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnForgotPassword.setText("Forget Password ?");
@@ -134,7 +134,7 @@ public class Login extends javax.swing.JFrame {
                 btnSignupActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 398, -1, -1));
+        getContentPane().add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 398, 80, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
         jLabel4.setText("jLabel4");
