@@ -50,11 +50,20 @@ public class UserDao {
                 user = new User();
                 user.setSecurityQuestion(rs.getString("securityQuestion"));
                 user.setAnswer(rs.getString("answer"));
+            }
             }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         
-    return user;
-    }
-
     
-}    
+                    }
+        
+    
+    return user;
+ 
+        
+    }
+    public static void update(String email,String newPassword){
+        String query = "update user set password = '" + newPassword + "'where email= '" + email + "'";
+        DbOperations.setDataOrDelete(query, "Password changed Successfully");
+    }
+}

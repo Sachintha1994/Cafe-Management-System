@@ -6,13 +6,14 @@ package cafe.managemant.system;
 
 import javax.swing.JOptionPane;
 import model.User;
+import dao.UserDao;
 
 /**
  *
  * @author sachi
  */
 public class ForgotPassward extends javax.swing.JFrame {
-    
+
     private String dbAnswer = null;
     private String email = null;
     private String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
@@ -25,9 +26,10 @@ public class ForgotPassward extends javax.swing.JFrame {
         btnUpdate.setEnabled(false);
         btnSearch.setEnabled(false);
         txtSecurityQuestion.setEditable(false); // meka use krnne security question eka change krnn be kyna method ekat.
-        
+
     }
-    public void clear (){
+
+    public void clear() {
         btnUpdate.setEnabled(false);
         btnSearch.setEnabled(false);
         txtEmail.setEditable(true);
@@ -36,28 +38,28 @@ public class ForgotPassward extends javax.swing.JFrame {
         txtAnswer.setText("");
         txtNewPassword.setText("");
     }
-    public void validateEmail(){
+
+    public void validateEmail() {
         email = txtEmail.getText();
-        if(email.matches(emailPattern)){
+        if (email.matches(emailPattern)) {
             btnSearch.setEnabled(true);
-           
-        
-        }else
+
+        } else {
             btnSearch.setEnabled(false);
-    
+        }
+
     }
-    public void validateFields(){
+
+    public void validateFields() {
         String password = txtNewPassword.getText();
         String answer = txtAnswer.getText();
         String securityQuestion = txtSecurityQuestion.getText();
-        if(!password.equals("") && !answer.equals("") && !securityQuestion.equals(""))
+        if (!password.equals("") && !answer.equals("") && !securityQuestion.equals("")) {
             btnUpdate.setEnabled(true);
-        
-        else
+        } else {
             btnUpdate.setEnabled(false);
-        
-        
-    
+        }
+
     }
 
     /**
@@ -146,6 +148,11 @@ public class ForgotPassward extends javax.swing.JFrame {
         btnSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 230, -1, -1));
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -180,11 +187,21 @@ public class ForgotPassward extends javax.swing.JFrame {
 
         btnSignup.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSignup.setText("Signup");
+        btnSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignupActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, 103, -1));
 
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
@@ -216,10 +233,11 @@ public class ForgotPassward extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "Do you really want to clase the Application","Select",JOptionPane.YES_NO_OPTION);
-        if (a == 0)
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to clase the Application", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
             System.exit(0);
-        
+        }
+
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -229,9 +247,46 @@ public class ForgotPassward extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+            String answer = txtAnswer.getText();
+            String newPassword = txtNewPassword.getText();
+            if(answer.equals(dbAnswer)){
+                UserDao.update(email, newPassword);
+                clear();
+            
+            }else
+                JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Answer</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+                
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
         email = txtEmail.getText();
         User user = null;
-    }//GEN-LAST:event_btnUpdateActionPerformed
+        user = UserDao.getSecurityQuestion(email);
+        if (user == null) {
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Email</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            btnSearch.setEnabled(false);
+            txtEmail.setEditable(false);
+            dbAnswer = user.getAnswer();
+            txtSecurityQuestion.setText(user.getSecurityQuestion());
+            validateFields();
+        }
+
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Signup().setVisible(true);
+    }//GEN-LAST:event_btnSignupActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
