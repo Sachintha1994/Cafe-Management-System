@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.managemant.system;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -108,6 +107,11 @@ public class Home extends javax.swing.JFrame {
         btnCategory.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/category.png"))); // NOI18N
         btnCategory.setText("Manage Category");
+        btnCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCategoryActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, -1, -1));
 
         btnNewProduct.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -126,7 +130,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(btnVerifyUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 590, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-background-image.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,8 +149,14 @@ public class Home extends javax.swing.JFrame {
         int a = JOptionPane.showConfirmDialog(null, "Do you really want to Close Application ? ", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
             System.exit(0);
+        }
     }//GEN-LAST:event_btnExitActionPerformed
-    }
+
+    private void btnCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryActionPerformed
+        // TODO add your handling code here:
+        new ManageCategory().setVisible(true);
+    }//GEN-LAST:event_btnCategoryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -164,24 +174,23 @@ public class Home extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCategory;
