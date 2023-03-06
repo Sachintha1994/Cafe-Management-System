@@ -117,16 +117,31 @@ public class Home extends javax.swing.JFrame {
         btnNewProduct.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnNewProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new product.png"))); // NOI18N
         btnNewProduct.setText("New Product");
+        btnNewProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewProductActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnNewProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, -1, -1));
 
         btnViewEditDeleteProduct.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnViewEditDeleteProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete product.png"))); // NOI18N
         btnViewEditDeleteProduct.setText("View,Edit & Delete Product");
+        btnViewEditDeleteProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewEditDeleteProductActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnViewEditDeleteProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 590, -1, -1));
 
         btnVerifyUsers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnVerifyUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify users.png"))); // NOI18N
         btnVerifyUsers.setText("Verify Users");
+        btnVerifyUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerifyUsersActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnVerifyUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 590, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-background-image.png"))); // NOI18N
@@ -156,6 +171,21 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ManageCategory().setVisible(true);
     }//GEN-LAST:event_btnCategoryActionPerformed
+
+    private void btnNewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewProductActionPerformed
+        // TODO add your handling code here:
+        new AddNewProduct().setVisible(true);
+    }//GEN-LAST:event_btnNewProductActionPerformed
+
+    private void btnViewEditDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEditDeleteProductActionPerformed
+        // TODO add your handling code here:
+        new ViewEditDeleteProduct().setVisible(true);
+    }//GEN-LAST:event_btnViewEditDeleteProductActionPerformed
+
+    private void btnVerifyUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyUsersActionPerformed
+        // TODO add your handling code here:
+        new VerifyUsers().setVisible(true);
+    }//GEN-LAST:event_btnVerifyUsersActionPerformed
 
     /**
      * @param args the command line arguments
