@@ -88,7 +88,7 @@ public class ManageCategory extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+
             },
             new String [] {
                 "ID", "Category"
@@ -182,7 +182,7 @@ public class ManageCategory extends javax.swing.JFrame {
         String id = model.getValueAt(index, 0).toString();
         String name = model.getValueAt(index, 1).toString();
 
-        int a = JOptionPane.showConfirmDialog(null, "Do you want to Delete" + name + "Category", "Select", JOptionPane.YES_NO_OPTION);
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to Delete " + name + " Category", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
             CategoryDao.delete(id);
             setVisible(false);

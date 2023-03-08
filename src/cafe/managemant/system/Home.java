@@ -60,7 +60,7 @@ public class Home extends javax.swing.JFrame {
         btnVerifyUsers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -77,6 +77,11 @@ public class Home extends javax.swing.JFrame {
         btnPlaceOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnPlaceOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/place order.png"))); // NOI18N
         btnPlaceOrder.setText("Place Order");
+        btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaceOrderActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPlaceOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 20, -1, -1));
 
         btnViewBillOrderPlacedDetails.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -186,6 +191,12 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         new VerifyUsers().setVisible(true);
     }//GEN-LAST:event_btnVerifyUsersActionPerformed
+
+    private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new PlaceOrder().setVisible(true);
+    }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
     /**
      * @param args the command line arguments
