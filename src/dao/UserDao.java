@@ -95,4 +95,19 @@ public class UserDao {
         String query = "update user set status='"+status+"'where email='"+email+"'";
         DbOperations.setDataOrDelete(query, "Status Changed Successfully");
     }
+    public static void changePassword(String email,String oldPassword,String newPassword){
+        try{
+           ResultSet rs = DbOperations.getData("select *from user where email='"+email+"' and password='"+oldPassword+"' ");
+           if(rs.next()){
+               update(email, newPassword);
+           }else {
+               JOptionPane.showMessageDialog(null, "Old Password is Wrong ");
+           }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    
+    
+    }
 }

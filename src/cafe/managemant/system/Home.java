@@ -87,11 +87,21 @@ public class Home extends javax.swing.JFrame {
         btnViewBillOrderPlacedDetails.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnViewBillOrderPlacedDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/View Bills & Order Placed Details.png"))); // NOI18N
         btnViewBillOrderPlacedDetails.setText("View Bill & Order Placed Details");
+        btnViewBillOrderPlacedDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewBillOrderPlacedDetailsActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnViewBillOrderPlacedDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 20, -1, -1));
 
         btnChangePassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnChangePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/change Password.png"))); // NOI18N
         btnChangePassword.setText("Change Password");
+        btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangePasswordActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnChangePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(742, 20, -1, -1));
 
         btnChangeSecurityQuestion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -195,8 +205,19 @@ public class Home extends javax.swing.JFrame {
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new PlaceOrder().setVisible(true);
+        new PlaceOrder(email).setVisible(true);
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
+
+    private void btnViewBillOrderPlacedDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBillOrderPlacedDetailsActionPerformed
+        // TODO add your handling code here:
+        new ViewBillsOrderPlacedDetails().setVisible(true);
+    }//GEN-LAST:event_btnViewBillOrderPlacedDetailsActionPerformed
+
+    private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ChangePassword(email).setVisible(true);
+    }//GEN-LAST:event_btnChangePasswordActionPerformed
 
     /**
      * @param args the command line arguments

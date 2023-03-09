@@ -476,7 +476,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         String customerMobileNumber = txtCusMobileNumber.getText();
         String customerEmail = txtCusEmail.getText();
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date date =new Date();
+        Date date = new Date();
         String todaydate = dFormat.format(date);
         String total = String.valueOf(grandTotal);
         String createdBy = userEmail;
@@ -510,9 +510,9 @@ public class PlaceOrder extends javax.swing.JFrame {
             tbl1.addCell("Total");
             for(int i=0; i< jTable2.getRowCount();i++){
                 String n = jTable2.getValueAt(i, 0).toString();
-                String d = jTable2.getValueAt(i, 0).toString();
-                String r = jTable2.getValueAt(i, 0).toString();
-                String q = jTable2.getValueAt(i, 0).toString();
+                String d = jTable2.getValueAt(i, 1).toString();
+                String r = jTable2.getValueAt(i, 2).toString();
+                String q = jTable2.getValueAt(i, 3).toString();
                 tbl1.addCell(n);
                 tbl1.addCell(d);
                 tbl1.addCell(r);

@@ -16,6 +16,7 @@ public class Bill {
     private String date;
     private String total;
     private String createdBy;
+    
 
     public int getId() {
         return id;
@@ -72,5 +73,6 @@ public class Bill {
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
+    
     
 }
